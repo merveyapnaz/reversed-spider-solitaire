@@ -1,0 +1,76 @@
+.card-content * {
+  border-radius: 5%;
+}
+
+.card,
+.card-distribute,
+.card-holder {
+  width: 7vw;
+  height: 20vh;
+}
+
+.card {
+  box-shadow: 0vh -0.1vh 1vh rgba(0, 0, 0, 0.562);
+  border: 0.3vh solid var(--primary-border);
+  position: relative;
+  margin-bottom: -15.5vh;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card:hover {
+  box-shadow: 0.5vh 0.5vh 0.5vh var(--primary-red);
+}
+
+.heart,
+.card-holder {
+  background: var(--primary-light-green);
+  color: var(--primary-red);
+}
+
+.card-distribute {
+  /* background-blend-mode: luminosity;
+  background-size: contain;
+  background-size: cover;
+  background-image: url("../../assets/img/distributeCard.jpg"); */
+  background-color: rgb(196, 243, 202);
+  background-image: var(--card-background-image);
+  border: 0.1vh solid var(--primary-border);
+  cursor: pointer;
+}
+
+.down {
+  background-color: rgb(196, 243, 202);
+  background-image: var(--card-background-image);
+}
+
+.card-holder {
+  border: 0.3vh dashed var(--primary-border);
+  cursor: pointer;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  line-height: 1vh;
+}
+
+.number {
+  font-size: 4vh;
+}
+
+.symbol-small {
+  font-size: 10vh;
+}
+
+.symbol-large {
+  align-self: center;
+  font-size: 18vh;
+  text-shadow: 0.3vh 0.5vh rgb(139 37 37);
+  line-height: 14vh;
+}

@@ -1,0 +1,54 @@
+.board-body,
+.board-header,
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Header Css Start */
+.header-items {
+  display: flex;
+  gap: 1vh;
+}
+
+.title {
+  color: #fff;
+  font-size: 5vh;
+  text-shadow: 0.5vh 0.5vh var(--primary-green);
+}
+
+.header-item {
+  background-color: var(--primary-light-green);
+  border: 0.5vh solid var(--primary-green);
+  border-radius: 2vh;
+  width: 10vw;
+  line-height: 4vh;
+  align-self: center;
+  font-size: 2.5vh;
+  text-align: center;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.header-item:hover {
+  background-color: transparent;
+  color: var(--primary-light-green);
+  box-shadow: 0 0 0.5vh 0.5vh var(--primary-green) ease-in-out;
+}
+
+.new-game-btn {
+  cursor: pointer;
+}
+/* Header Css End */
+
+/* Board Css Start */
+.undistributed-deck {
+  display: flex;
+  justify-content: flex-start;
+  height: 23vh;
+}
+
+.complated-decks {
+  display: flex;
+  gap: 1vw;
+}
+/* Board Css End */
