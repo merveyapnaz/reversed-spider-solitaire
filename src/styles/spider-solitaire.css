@@ -6,15 +6,15 @@
 }
 
 /* Header Css Start */
-.header-items {
-  display: flex;
-  gap: 1vh;
-}
-
 .title {
   color: var(--primary-dark-color);
   font-size: 5vh;
   text-shadow: 0.5vh 0.5vh var(--primary-light-color);
+}
+
+.header-items {
+  display: flex;
+  gap: 1vh;
 }
 
 .header-item {
@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0vh -0.1vh 1vh #1c3442;
+  box-shadow: 0vh -0.1vh 1vh var(--primary-dark-color);
 }
 
 .header-item > img {

@@ -1,26 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1628713484497" clover="3.2.0">
-  <project timestamp="1628713484498" name="All files">
-    <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7" elements="32" coveredelements="32" complexity="0" loc="17" ncloc="17" packages="1" files="1" classes="1"/>
-    <file name="Timer.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\components\Timer.vue">
-      <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
-      <line num="11" count="3" type="stmt"/>
-      <line num="22" count="11" type="stmt"/>
-      <line num="33" count="30280" type="cond" truecount="2" falsecount="0"/>
-      <line num="34" count="504" type="stmt"/>
-      <line num="36" count="504" type="cond" truecount="2" falsecount="0"/>
-      <line num="37" count="8" type="stmt"/>
-      <line num="38" count="8" type="stmt"/>
-      <line num="40" count="496" type="stmt"/>
-      <line num="43" count="29776" type="stmt"/>
-      <line num="48" count="33" type="cond" truecount="2" falsecount="0"/>
-      <line num="49" count="27" type="stmt"/>
-      <line num="51" count="33" type="stmt"/>
-      <line num="55" count="1" type="stmt"/>
-      <line num="59" count="3" type="stmt"/>
-      <line num="61" count="3" type="stmt"/>
-      <line num="63" count="34065" type="cond" truecount="2" falsecount="0"/>
-      <line num="64" count="30280" type="stmt"/>
-    </file>
+<coverage generated="1628801273316" clover="3.2.0">
+  <project timestamp="1628801273316" name="All files">
+    <metrics statements="157" coveredstatements="50" conditionals="54" coveredconditionals="11" methods="35" coveredmethods="11" elements="246" coveredelements="72" complexity="0" loc="157" ncloc="157" packages="7" files="8" classes="8"/>
+    <package name="src">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="App.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\App.vue">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.common.services">
+      <metrics statements="44" coveredstatements="1" conditionals="19" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="spiderSolitaireService.js" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\common\services\spiderSolitaireService.js">
+        <metrics statements="44" coveredstatements="1" conditionals="19" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="96" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="111" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="122" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="133" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="137" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="144" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="145" count="0" type="stmt"/>
+        <line num="146" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="149" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="154" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.common.utilities">
+      <metrics statements="20" coveredstatements="20" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="utilities.js" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\common\utilities\utilities.js">
+        <metrics statements="20" coveredstatements="20" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="26" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="18" coveredstatements="18" conditionals="8" coveredconditionals="8" methods="8" coveredmethods="8"/>
+      <file name="NewGameButton.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\components\NewGameButton.vue">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="Timer.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\components\Timer.vue">
+        <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="22" count="11" type="stmt"/>
+        <line num="33" count="30280" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="504" type="stmt"/>
+        <line num="36" count="504" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="40" count="496" type="stmt"/>
+        <line num="43" count="29776" type="stmt"/>
+        <line num="48" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="27" type="stmt"/>
+        <line num="51" count="33" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="63" count="34065" type="cond" truecount="2" falsecount="0"/>
+        <line num="64" count="30280" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Card">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Card.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\components\Card\Card.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Toastr">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="Toastr.js" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\components\Toastr\Toastr.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.views">
+      <metrics statements="71" coveredstatements="8" conditionals="24" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <file name="SpiderSolitaire.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\views\SpiderSolitaire.vue">
+        <metrics statements="71" coveredstatements="8" conditionals="24" coveredconditionals="0" methods="16" coveredmethods="0"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="143" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="144" count="0" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="153" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="158" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="159" count="0" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="163" count="0" type="stmt"/>
+        <line num="166" count="0" type="stmt"/>
+        <line num="167" count="0" type="stmt"/>
+        <line num="168" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="169" count="0" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="176" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="177" count="0" type="stmt"/>
+        <line num="181" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="182" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="183" count="0" type="stmt"/>
+        <line num="185" count="0" type="stmt"/>
+        <line num="190" count="0" type="stmt"/>
+        <line num="192" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="193" count="0" type="stmt"/>
+        <line num="196" count="0" type="stmt"/>
+        <line num="197" count="0" type="stmt"/>
+        <line num="198" count="0" type="stmt"/>
+        <line num="200" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="202" count="0" type="stmt"/>
+        <line num="203" count="0" type="stmt"/>
+        <line num="204" count="0" type="stmt"/>
+        <line num="208" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="209" count="0" type="stmt"/>
+        <line num="210" count="0" type="stmt"/>
+        <line num="212" count="0" type="stmt"/>
+        <line num="213" count="0" type="stmt"/>
+        <line num="218" count="0" type="stmt"/>
+        <line num="219" count="0" type="stmt"/>
+        <line num="220" count="0" type="stmt"/>
+        <line num="221" count="0" type="stmt"/>
+        <line num="222" count="0" type="stmt"/>
+        <line num="225" count="0" type="stmt"/>
+        <line num="228" count="0" type="stmt"/>
+        <line num="230" count="0" type="stmt"/>
+        <line num="231" count="0" type="stmt"/>
+        <line num="233" count="0" type="stmt"/>
+        <line num="234" count="0" type="stmt"/>
+        <line num="236" count="0" type="stmt"/>
+        <line num="237" count="0" type="stmt"/>
+        <line num="238" count="0" type="stmt"/>
+        <line num="240" count="0" type="stmt"/>
+        <line num="245" count="0" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

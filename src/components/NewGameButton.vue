@@ -9,6 +9,7 @@ export default {
   name: "NewGameButton",
   methods: {
     newGame() {
+      //reload page for new game
       window.location.reload();
     },
   },

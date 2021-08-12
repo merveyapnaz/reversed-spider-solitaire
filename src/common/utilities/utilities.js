@@ -1,24 +1,39 @@
 const utilities = {
   shuffleArray(a) {
-    var j, x, i;
+    try {
+      var j, x, i;
 
-    for (i = a.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = a[i];
-      a[i] = a[j];
-      a[j] = x;
+      for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+      }
+
+      return a;
+    } catch (error) {
+      let err = `Error : ${error.message}`;
+      console.log(err);
+
+      throw err;
     }
-
-    return a;
   },
-  chunkArray(arr, chunkSize = 1, cache = []) {
-    const tmp = [...arr];
+  chunkArray(arr, chunkSize = 1) {
+    try {
+      const tmp = [...arr];
+      let cache = [];
 
-    if (chunkSize <= 0) return cache;
+      if (chunkSize <= 0) return cache;
 
-    while (tmp.length) cache.push(tmp.splice(0, chunkSize));
+      while (tmp.length) cache.push(tmp.splice(0, chunkSize));
 
-    return cache;
+      return cache;
+    } catch (error) {
+      let err = `Error : ${error.message}`;
+      console.log(err);
+
+      throw err;
+    }
   },
 };
 
