@@ -15,6 +15,8 @@ const app = {
     "K",
   ],
   totalDeckCount: 8,
+  movePoint: 100,
+  deckComplatePoint: 500,
 };
 
 export default app;

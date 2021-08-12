@@ -1,5 +1,7 @@
 <template>
-  <button class="header-item new-game-btn" @click="newGame">New Game</button>
+  <div class="header-item new-game-btn" @click="newGame">
+    <img src="../assets/img/refresh.svg" />New Game
+  </div>
 </template>
 
 <script>

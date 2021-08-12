@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1628675894825" clover="3.2.0">
-  <project timestamp="1628675894825" name="All files">
-    <metrics statements="23" coveredstatements="23" conditionals="10" coveredconditionals="10" methods="11" coveredmethods="11" elements="44" coveredelements="44" complexity="0" loc="23" ncloc="23" packages="1" files="2" classes="2"/>
-    <file name="ScoreTable.vue" path="C:\Users\Myapnaz\Desktop\Merve\BootCamp\Final\graduation-project-merve-yapnaz\src\components\ScoreTable.vue">
-      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
-      <line num="9" count="3" type="stmt"/>
-      <line num="21" count="1" type="stmt"/>
-      <line num="24" count="2" type="stmt"/>
-      <line num="29" count="3" type="stmt"/>
-      <line num="31" count="3" type="cond" truecount="2" falsecount="0"/>
-      <line num="32" count="1" type="stmt"/>
-    </file>
-    <file name="Timer.vue" path="C:\Users\Myapnaz\Desktop\Merve\BootCamp\Final\graduation-project-merve-yapnaz\src\components\Timer.vue">
+<coverage generated="1628713484497" clover="3.2.0">
+  <project timestamp="1628713484498" name="All files">
+    <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7" elements="32" coveredelements="32" complexity="0" loc="17" ncloc="17" packages="1" files="1" classes="1"/>
+    <file name="Timer.vue" path="C:\Users\Myapnaz\Documents\GitHub\reversed-spider-solitaire\src\components\Timer.vue">
       <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
-      <line num="9" count="3" type="stmt"/>
-      <line num="20" count="11" type="stmt"/>
-      <line num="31" count="30280" type="cond" truecount="2" falsecount="0"/>
-      <line num="32" count="504" type="stmt"/>
-      <line num="34" count="504" type="cond" truecount="2" falsecount="0"/>
-      <line num="35" count="8" type="stmt"/>
-      <line num="36" count="8" type="stmt"/>
-      <line num="38" count="496" type="stmt"/>
-      <line num="41" count="29776" type="stmt"/>
-      <line num="46" count="33" type="cond" truecount="2" falsecount="0"/>
-      <line num="47" count="27" type="stmt"/>
-      <line num="49" count="33" type="stmt"/>
-      <line num="52" count="1" type="stmt"/>
-      <line num="56" count="3" type="stmt"/>
-      <line num="58" count="3" type="stmt"/>
-      <line num="59" count="34065" type="cond" truecount="2" falsecount="0"/>
-      <line num="60" count="30280" type="stmt"/>
+      <line num="11" count="3" type="stmt"/>
+      <line num="22" count="11" type="stmt"/>
+      <line num="33" count="30280" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="504" type="stmt"/>
+      <line num="36" count="504" type="cond" truecount="2" falsecount="0"/>
+      <line num="37" count="8" type="stmt"/>
+      <line num="38" count="8" type="stmt"/>
+      <line num="40" count="496" type="stmt"/>
+      <line num="43" count="29776" type="stmt"/>
+      <line num="48" count="33" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="27" type="stmt"/>
+      <line num="51" count="33" type="stmt"/>
+      <line num="55" count="1" type="stmt"/>
+      <line num="59" count="3" type="stmt"/>
+      <line num="61" count="3" type="stmt"/>
+      <line num="63" count="34065" type="cond" truecount="2" falsecount="0"/>
+      <line num="64" count="30280" type="stmt"/>
     </file>
   </project>
 </coverage>

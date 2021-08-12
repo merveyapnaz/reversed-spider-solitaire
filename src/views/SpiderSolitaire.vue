@@ -4,12 +4,7 @@
       <h1 class="title">Reversed Spider Solitaire</h1>
       <div class="header-items">
         <timer ref="timer" :isRunning="isTimerRunning" />
-        <score-table
-          :deckCount="complatedDeckCount"
-          :moveCount="moveCount"
-          :isGameEnd="isGameEnd"
-          :timerValue="timerValue"
-        />
+        <score-table :score="score" />
         <new-game-button />
       </div>
     </div>
@@ -86,6 +81,8 @@ import Timer from "../components/Timer";
 import ScoreTable from "../components/ScoreTable";
 import NewGameButton from "../components/NewGameButton";
 import { cardTypeEnum } from "@/common/enums/cardTypeEnum";
+import { scoreTypeEnum } from "@/common/enums/scoreTypeEnum";
+import spiderSolitaireService from "@/common/services/spiderSolitaireService";
 
 export default {
   name: "SpiderSolitaire",
@@ -109,8 +106,8 @@ export default {
       targetDeck: [],
       isTimerRunning: true,
       isGameEnd: false,
-      moveCount: 0,
       timerValue: 0,
+      score: 0,
       cardTypeEnum: cardTypeEnum,
       holderCard: {
         type: cardTypeEnum.Holder,
@@ -131,7 +128,7 @@ export default {
   },
   methods: {
     initializeCards() {
-      let allDecks = this.$utilities.initializeCards();
+      let allDecks = spiderSolitaireService.initializeCards();
 
       this.undistributedDeck = allDecks.undistributedDeck;
       this.decks = allDecks.distributedDecks;
@@ -143,7 +140,7 @@ export default {
         this.selectedDeck.indexOf(card)
       );
 
-      if (!this.$utilities.moveCheck(card, this.selectedCards)) {
+      if (!spiderSolitaireService.moveCheck(card, this.selectedCards)) {
         this.$Toastr.showToastr("error", "You can't move selected card.");
         this.removeSelections();
       }
@@ -153,7 +150,9 @@ export default {
       this.targetDeck = deck;
     },
     dragEnd() {
-      if (this.$utilities.dropCheck(this.targetCard, this.selectedCard)) {
+      if (
+        spiderSolitaireService.dropCheck(this.targetCard, this.selectedCard)
+      ) {
         this.selectedDeck.splice(this.selectedCards.length * -1);
 
         if (this.selectedDeck.length) {
@@ -164,7 +163,7 @@ export default {
           this.targetDeck.push(selectedCard);
         });
 
-        this.moveCount++;
+        this.updateScore(scoreTypeEnum.Move);
         this.deckComplatedCheck();
       } else if (this.targetCard != this.selectedCard) {
         this.$Toastr.showToastr("error", "You can't move card here.");
@@ -180,7 +179,7 @@ export default {
       });
 
       if (openedCards.length >= 13) {
-        if (!this.$utilities.sortOfCardsCheck(openedCards.slice(-13))) {
+        if (!spiderSolitaireService.sortOfCardsCheck(openedCards.slice(-13))) {
           return false;
         } else {
           this.deckComplate();
@@ -195,12 +194,13 @@ export default {
       }
 
       this.complatedDeckCount++;
+      this.updateScore(scoreTypeEnum.DeckComplate);
       this.$Toastr.showToastr("success", "Deck completed successfully.");
 
       if (this.complatedDeckCount == this.$app.totalDeckCount) {
         this.isTimerRunning = false;
         this.isGameEnd = true;
-        this.getTimerValue();
+        this.updateScore(scoreTypeEnum.GameEnd);
         this.$Toastr.showToastr("success", "CONGRATULATIONS :) :)");
       }
     },
@@ -223,6 +223,22 @@ export default {
     },
     getTimerValue() {
       this.timerValue = this.$refs.timer.getTimerValue();
+    },
+    updateScore(type) {
+      switch (type) {
+        case scoreTypeEnum.Move:
+          this.score += this.$app.movePoint;
+          break;
+        case scoreTypeEnum.DeckComplate:
+          this.score += this.$app.deckComplatePoint;
+          break;
+        case scoreTypeEnum.GameEnd:
+          this.getTimerValue();
+          this.score -= this.timerValue;
+          break;
+        default:
+          break;
+      }
     },
   },
   created() {

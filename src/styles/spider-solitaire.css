@@ -12,14 +12,14 @@
 }
 
 .title {
-  color: #fff;
+  color: var(--primary-dark-color);
   font-size: 5vh;
-  text-shadow: 0.5vh 0.5vh var(--primary-green);
+  text-shadow: 0.5vh 0.5vh var(--primary-light-color);
 }
 
 .header-item {
-  background-color: var(--primary-light-green);
-  border: 0.5vh solid var(--primary-green);
+  background-color: var(--primary-light-color);
+  border: 0.5vh solid var(--primary-dark-color);
   border-radius: 2vh;
   width: 10vw;
   line-height: 4vh;
@@ -27,12 +27,15 @@
   font-size: 2.5vh;
   text-align: center;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0vh -0.1vh 1vh #1c3442;
 }
 
-.header-item:hover {
-  background-color: transparent;
-  color: var(--primary-light-green);
-  box-shadow: 0 0 0.5vh 0.5vh var(--primary-green) ease-in-out;
+.header-item > img {
+  width: 1.5vw;
+  height: 1.5vw;
 }
 
 .new-game-btn {

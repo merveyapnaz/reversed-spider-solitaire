@@ -6,12 +6,12 @@
 .card-distribute,
 .card-holder {
   width: 7vw;
-  height: 20vh;
+  height: 21vh;
 }
 
 .card {
-  box-shadow: 0vh -0.1vh 1vh rgba(0, 0, 0, 0.562);
-  border: 0.3vh solid var(--primary-border);
+  box-shadow: 0vh -0.1vh 1vh #1c3442;
+  border: 0.3vh solid var(--primary-dark-color);
   position: relative;
   margin-bottom: -15.5vh;
   cursor: pointer;
@@ -26,28 +26,30 @@
 
 .heart,
 .card-holder {
-  background: var(--primary-light-green);
+  background: var(--primary-light-color);
   color: var(--primary-red);
 }
 
 .card-distribute {
-  /* background-blend-mode: luminosity;
+  background-blend-mode: luminosity;
   background-size: contain;
   background-size: cover;
-  background-image: url("../../assets/img/distributeCard.jpg"); */
-  background-color: rgb(196, 243, 202);
-  background-image: var(--card-background-image);
-  border: 0.1vh solid var(--primary-border);
+  background-image: url("../../assets/img/distributeCard.jpg");
+  background-color: #1c344294;
+  /*background-color: var(--card-bacground-color);*/
+  /* background-image: var(--card-background-image); */
+  border: 0.3vh solid var(--primary-dark-color);
+  box-shadow: 0vh -0.1vh 1vh #1c3442;
   cursor: pointer;
 }
 
 .down {
-  background-color: rgb(196, 243, 202);
+  background-color: var(--card-bacground-color);
   background-image: var(--card-background-image);
 }
 
 .card-holder {
-  border: 0.3vh dashed var(--primary-border);
+  border: 0.3vh dashed var(--primary-dark-color);
   cursor: pointer;
 }
 
