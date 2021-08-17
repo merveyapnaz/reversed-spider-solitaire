@@ -1,5 +1,5 @@
 <template>
-  <div class="header-item">
+  <div class="header-item score-table">
     <img src="../assets/img/handGesture.svg" />{{ this.score }}
   </div>
 </template>
