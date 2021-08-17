@@ -58,7 +58,7 @@
               class="cards"
               v-for="cardItem in deck"
               :key="cardItem.cardNumber + cardItem.deck"
-              @dragstart="dragStart($event, cardItem, deck)"
+              @dragstart="dragStart(cardItem, deck)"
               @dragend="dragEnd()"
               @dragenter="dragEnter(deck, cardItem)"
               @select="distributeCards"
@@ -133,12 +133,18 @@ export default {
       this.undistributedDeck = allDecks.undistributedDeck;
       this.decks = allDecks.distributedDecks;
     },
-    dragStart(event, card, deck) {
+    dragStart(card, deck) {
       this.selectedDeck = deck;
       this.selectedCard = card;
-      this.selectedCards = this.selectedDeck.slice(
-        this.selectedDeck.indexOf(card)
+
+      //Find index of selected card in deck
+      let selectedCardIndex = this.selectedDeck.findIndex(
+        (item) =>
+          item.cardNumber === this.selectedCard.cardNumber &&
+          item.deck === this.selectedCard.deck
       );
+
+      this.selectedCards = this.selectedDeck.slice(selectedCardIndex);
 
       if (!spiderSolitaireService.moveCheck(card, this.selectedCards)) {
         this.$Toastr.showToastr("error", "You can't move selected card.");
@@ -155,6 +161,7 @@ export default {
       ) {
         this.selectedDeck.splice(this.selectedCards.length * -1);
 
+        //Open last card in deck
         if (this.selectedDeck.length) {
           this.selectedDeck[this.selectedDeck.length - 1].isOpen = true;
         }
@@ -179,9 +186,7 @@ export default {
       });
 
       if (openedCards.length >= 13) {
-        if (!spiderSolitaireService.sortOfCardsCheck(openedCards.slice(-13))) {
-          return false;
-        } else {
+        if (spiderSolitaireService.sortOfCardsCheck(openedCards.slice(-13))) {
           this.deckComplate();
         }
       }
@@ -197,6 +202,7 @@ export default {
       this.updateScore(scoreTypeEnum.DeckComplate);
       this.$Toastr.showToastr("success", "Deck completed successfully.");
 
+      //All decks are complated
       if (this.complatedDeckCount == this.$app.totalDeckCount) {
         this.isTimerRunning = false;
         this.isGameEnd = true;

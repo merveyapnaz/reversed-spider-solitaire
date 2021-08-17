@@ -3,6 +3,8 @@
 .header {
   display: flex;
   justify-content: space-between;
+  line-height: 1vh;
+  padding-bottom: 3vh;
 }
 
 /* Header Css Start */

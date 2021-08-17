@@ -3,7 +3,7 @@ import Card from "@/components/Card/Card.vue";
 import { cardTypeEnum } from "@/common/enums/cardTypeEnum";
 
 describe("Card.vue", () => {
-  it("when props card type is Holder should no card text in component", async () => {
+  it("when props card type is Holder should no card text in component", () => {
     const wrapper = shallowMount(Card, {
       propsData: {
         card: {
@@ -15,7 +15,7 @@ describe("Card.vue", () => {
     expect(wrapper.text()).toBe("");
   });
 
-  it("when props card type is Distribute should no card text in component", async () => {
+  it("when props card type is Distribute should no card text in component", () => {
     const wrapper = shallowMount(Card, {
       propsData: {
         card: {
@@ -27,7 +27,7 @@ describe("Card.vue", () => {
     expect(wrapper.text()).toBe("");
   });
 
-  it("when props card type is Card, item with number class must contain card number", async () => {
+  it("when props card type is Card, item with number class must contain card number", () => {
     const wrapper = shallowMount(Card, {
       propsData: {
         card: {
@@ -46,7 +46,7 @@ describe("Card.vue", () => {
     expect(numberWrapper.text()).toBe("2");
   });
 
-  it("when props card type is Complated, item with number class must contain ''A", async () => {
+  it("when props card type is Complated, item with number class must contain ''A", () => {
     const wrapper = shallowMount(Card, {
       propsData: {
         card: {

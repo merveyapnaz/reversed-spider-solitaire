@@ -1,5 +1,6 @@
 const utilities = {
   shuffleArray(a) {
+    //To shuffle given array
     try {
       var j, x, i;
 
@@ -19,6 +20,7 @@ const utilities = {
     }
   },
   chunkArray(arr, chunkSize = 1) {
+    //To split the given array into the given ranges
     try {
       const tmp = [...arr];
       let cache = [];

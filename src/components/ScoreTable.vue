@@ -1,6 +1,6 @@
 <template>
   <div class="header-item">
-    <img src="../assets/img/hand-gesture.svg" />{{ this.score }}
+    <img src="../assets/img/handGesture.svg" />{{ this.score }}
   </div>
 </template>
 

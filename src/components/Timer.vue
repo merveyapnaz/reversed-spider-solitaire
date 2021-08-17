@@ -1,6 +1,6 @@
 <template>
   <div class="header-item">
-    <img src="../assets/img/stopwatch.svg" />{{ this.timer }}
+    <img src="../assets/img/stopWatch.svg" />{{ this.timer }}
   </div>
 </template>
 

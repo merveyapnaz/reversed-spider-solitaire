@@ -74,11 +74,16 @@ const spiderSolitaireService = {
 
     let mixedDecks = utilities.shuffleArray(baseDecks);
 
+    //To divide the cards into 4 decks of 6 each and 6 decks of 5 each.
     distributedDecks = utilities.chunkArray(mixedDecks.slice(0, 24), 6);
     distributedDecks = distributedDecks.concat(
       utilities.chunkArray(mixedDecks.slice(24, 54), 5)
     );
+
+    //Throws the remaining cards into the undistributed array
     undistributedDeck = mixedDecks.slice(54, 104);
+
+    //Open last card each deck
     distributedDecks.forEach((deck) => {
       deck[deck.length - 1].isOpen = true;
     });
@@ -118,40 +123,61 @@ const spiderSolitaireService = {
     return number;
   },
   sortOfCardsCheck(cardList) {
-    for (let index = 0; index < cardList.length; index++) {
-      if (
-        index < cardList.length - 1 &&
-        cardList[index + 1].value - cardList[index].value != 1
-      ) {
-        return false;
+    try {
+      for (let index = 0; index < cardList.length; index++) {
+        if (
+          index < cardList.length - 1 &&
+          cardList[index + 1].value - cardList[index].value != 1
+        ) {
+          return false;
+        }
       }
-    }
 
-    return true;
+      return true;
+    } catch (error) {
+      let err = `Error : ${error.message}`;
+      console.log(err);
+
+      throw err;
+    }
   },
   moveCheck(card, selectedCards) {
-    if (!card.isOpen) {
-      return false;
-    }
-
-    if (!this.sortOfCardsCheck(selectedCards)) {
-      return false;
-    }
-
-    return true;
-  },
-  dropCheck(targetCard, selectedCard) {
-    if (targetCard.type == cardTypeEnum.Holder) {
-      return true;
-    } else if (!targetCard.isOpen) {
-      return false;
-    } else {
-      if (!this.sortOfCardsCheck([targetCard, selectedCard])) {
+    try {
+      if (!card.isOpen) {
         return false;
       }
-    }
 
-    return true;
+      if (!this.sortOfCardsCheck(selectedCards)) {
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      let err = `Error : ${error.message}`;
+      console.log(err);
+
+      throw err;
+    }
+  },
+  dropCheck(targetCard, selectedCard) {
+    try {
+      if (targetCard.type == cardTypeEnum.Holder) {
+        return true;
+      } else if (!targetCard.isOpen) {
+        return false;
+      } else {
+        if (!this.sortOfCardsCheck([targetCard, selectedCard])) {
+          return false;
+        }
+      }
+
+      return true;
+    } catch (error) {
+      let err = `Error : ${error.message}`;
+      console.log(err);
+
+      throw err;
+    }
   },
 };
 
