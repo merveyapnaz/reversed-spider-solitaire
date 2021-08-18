@@ -5,7 +5,8 @@
       <div class="header-items">
         <timer ref="timer" :isRunning="isTimerRunning" />
         <score-table :score="score" />
-        <new-game-button />
+        <custom-button :type="buttonTypeEnum.Hint" @hint="hint" />
+        <custom-button :type="buttonTypeEnum.NewGame" @newGame="newGame" />
       </div>
     </div>
     <div class="board">
@@ -15,6 +16,7 @@
             v-if="undistributedDeck.length"
             :card="distributeCard"
             @click.native="distributeCards"
+            :key="refreshCard + 'Distribute'"
           />
           <card
             v-else
@@ -63,7 +65,7 @@
               @dragenter="dragEnter(deck, cardItem)"
               @select="distributeCards"
             >
-              <card :card="cardItem" />
+              <card :card="cardItem" :key="refreshCard" />
             </div>
           </div>
         </div>
@@ -79,9 +81,10 @@ import Card from "../components/Card/Card";
 import Firework from "../components/Firework/Firework";
 import Timer from "../components/Timer";
 import ScoreTable from "../components/ScoreTable";
-import NewGameButton from "../components/NewGameButton";
+import Button from "../components/Button";
 import { cardTypeEnum } from "@/common/enums/cardTypeEnum";
 import { scoreTypeEnum } from "@/common/enums/scoreTypeEnum";
+import { buttonTypeEnum } from "@/common/enums/buttonTypeEnum";
 import spiderSolitaireService from "@/common/services/spiderSolitaireService";
 
 export default {
@@ -91,7 +94,7 @@ export default {
     firework: Firework,
     timer: Timer,
     "score-table": ScoreTable,
-    "new-game-button": NewGameButton,
+    "custom-button": Button,
   },
   data() {
     return {
@@ -109,6 +112,7 @@ export default {
       timerValue: 0,
       score: 0,
       cardTypeEnum: cardTypeEnum,
+      buttonTypeEnum: buttonTypeEnum,
       holderCard: {
         type: cardTypeEnum.Holder,
       },
@@ -118,6 +122,7 @@ export default {
       distributeCard: {
         type: cardTypeEnum.Distribute,
       },
+      refreshCard: 0,
     };
   },
   watch: {
@@ -245,6 +250,108 @@ export default {
         default:
           break;
       }
+    },
+    newGame() {
+      //reload page for new game
+      window.location.reload();
+    },
+    hint() {
+      let isThereAnyTip = false;
+
+      for (
+        let recomendedIndex = 0;
+        recomendedIndex < this.decks.length;
+        recomendedIndex++
+      ) {
+        let recomendedCards = this.decks[recomendedIndex].filter((item) => {
+          if (item.isOpen) {
+            return item;
+          }
+        });
+
+        if (recomendedCards.length <= 0 || isThereAnyTip) {
+          break;
+        }
+
+        let isRecomendedCardsSorted = false;
+
+        while (!isRecomendedCardsSorted) {
+          if (spiderSolitaireService.sortOfCardsCheck(recomendedCards)) {
+            isRecomendedCardsSorted = true;
+          } else {
+            recomendedCards.shift();
+          }
+        }
+
+        for (
+          let targetIndex = 0;
+          targetIndex < this.decks.length;
+          targetIndex++
+        ) {
+          let targetCards = this.decks[targetIndex];
+
+          if (
+            recomendedIndex != targetIndex &&
+            this.checkHintTargetDeckMove(targetCards, recomendedCards)
+          ) {
+            targetCards[targetCards.length - 1].isSelected = true;
+            recomendedCards.forEach((recomendedCard) => {
+              recomendedCard.isSelected = true;
+            });
+
+            this.refreshCard++;
+            isThereAnyTip = true;
+
+            break;
+          }
+
+          if (isThereAnyTip) {
+            break;
+          }
+        }
+      }
+
+      if (!isThereAnyTip) {
+        if (this.undistributedDeck.length > 0) {
+          this.distributeCard.isSelected = true;
+          this.refreshCard++;
+        } else {
+          this.$Toastr.showToastr(
+            "warning",
+            "There are no possible moves left."
+          );
+        }
+      }
+
+      this.removeHintSelections();
+    },
+    checkHintTargetDeckMove(targetCards, recomendedCards) {
+      let result = false;
+      if (
+        targetCards.length > 0 &&
+        targetCards[targetCards.length - 1].isOpen &&
+        spiderSolitaireService.dropCheck(
+          targetCards[targetCards.length - 1],
+          recomendedCards[0]
+        )
+      ) {
+        result = true;
+      }
+
+      return result;
+    },
+    removeHintSelections() {
+      setTimeout(() => {
+        this.decks.forEach((deck) => {
+          deck.forEach((card) => {
+            card.isSelected = false;
+          });
+        });
+
+        this.distributeCard.isSelected = false;
+
+        this.refreshCard++;
+      }, 1000 * 1);
     },
   },
   created() {

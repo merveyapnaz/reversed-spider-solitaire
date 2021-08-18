@@ -13,7 +13,7 @@
   box-shadow: 0vh -0.1vh 1vh var(--primary-dark-color);
   border: 0.3vh solid var(--primary-dark-color);
   position: relative;
-  margin-bottom: -15.5vh;
+  margin-bottom: -17vh;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -80,4 +80,8 @@
   font-size: 18vh;
   text-shadow: 0.3vh 0.5vh rgb(139 37 37);
   line-height: 14vh;
+}
+
+.selected {
+  border: 0.7vh solid var(--primary-dark-color);
 }

@@ -7,7 +7,21 @@
   padding-bottom: 3vh;
 }
 
+.board {
+  padding-top: 10vh;
+}
+
 /* Header Css Start */
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 95vw;
+  margin-left: 2vw;
+}
+
 .title {
   color: var(--primary-dark-color);
   font-size: 5vh;

@@ -1,7 +1,12 @@
 <template>
   <div class="card-content">
     <div v-if="card.type == cardTypeEnum.Card">
-      <div v-if="card.isOpen" class="card heart" draggable="true">
+      <div
+        v-if="card.isOpen"
+        class="card heart"
+        :class="card.isSelected ? 'selected' : ''"
+        draggable="true"
+      >
         <div class="card-top">
           <div class="number">{{ card.cardNumber }}</div>
 
@@ -14,6 +19,7 @@
     <div
       v-else-if="card.type == cardTypeEnum.Distribute"
       class="card-distribute"
+      :class="card.isSelected ? 'selected' : ''"
     ></div>
     <div
       v-else-if="card.type == cardTypeEnum.Holder"
@@ -36,6 +42,9 @@ export default {
   name: "Card",
   props: {
     card: { type: Object, required: true },
+  },
+  watch: {
+    card() {},
   },
   data() {
     return {
