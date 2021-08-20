@@ -51,7 +51,7 @@
             v-if="!deck.length"
             class="card-content"
             draggable="true"
-            @dragenter="dragEnter(deck)"
+            @dragenter="dragEnter(deck, holderCard)"
           >
             <card :card="holderCard" />
           </div>
@@ -164,9 +164,14 @@ export default {
         this.removeSelections();
       }
     },
-    dragEnter(deck) {
+    dragEnter(deck, holderCard = null) {
       this.targetDeck = deck;
-      this.targetCard = deck[deck.length - 1];
+
+      if (holderCard != null) {
+        this.targetCard = holderCard;
+      } else {
+        this.targetCard = deck[deck.length - 1];
+      }
     },
     dragEnd() {
       if (
