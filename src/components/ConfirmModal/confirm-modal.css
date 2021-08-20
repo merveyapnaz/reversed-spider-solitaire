@@ -1,0 +1,47 @@
+.confirm-modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 35%;
+  left: 30%;
+  font-size: 2vw;
+  background-color: var(--primary-light-color);
+  border-radius: 0.5vw;
+  text-align: center;
+  min-width: 25vw;
+  width: auto;
+  transition: all 0.1s ease-in;
+  border: 0.4vh solid var(--primary-dark-color);
+  box-shadow: 0.2vh 0.2vh var(--primary-dark-color);
+}
+
+.confirm-modal-text {
+  padding: 1vh;
+}
+
+.confirm-modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2vh;
+}
+
+.confirm-modal-buttons > div {
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  padding-right: 3vw;
+  padding-left: 3vw;
+  border-radius: 0.5vw;
+  cursor: pointer;
+}
+
+.confirm-modal-buttons > div:hover {
+  box-shadow: 0.2vh 0.2vh var(--primary-dark-color);
+}
+
+.confirm-btn-yes {
+  background-color: #91cdba;
+}
+
+.confirm-btn-no {
+  background-color: var(--primary-red);
+}

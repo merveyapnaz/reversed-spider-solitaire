@@ -51,7 +51,7 @@
             v-if="!deck.length"
             class="card-content"
             draggable="true"
-            @dragenter="dragEnter(deck, holderCard)"
+            @dragenter="dragEnter(deck)"
           >
             <card :card="holderCard" />
           </div>
@@ -62,7 +62,7 @@
               :key="cardItem.cardNumber + cardItem.deck"
               @dragstart="dragStart(cardItem, deck)"
               @dragend="dragEnd()"
-              @dragenter="dragEnter(deck, cardItem)"
+              @dragenter="dragEnter(deck)"
               @select="distributeCards"
             >
               <card :card="cardItem" :key="refreshCard" />
@@ -73,6 +73,11 @@
     </div>
     <!-- For Congratulations Animation -->
     <firework v-show="isGameEnd" />
+    <confirm-modal
+      text="Are you sure you want to start a new game?"
+      @confirmModalResponse="confirmModalResponse"
+      v-show="confirmModalShow"
+    />
   </div>
 </template>
 
@@ -82,6 +87,7 @@ import Firework from "../components/Firework/Firework";
 import Timer from "../components/Timer";
 import ScoreTable from "../components/ScoreTable";
 import Button from "../components/Button";
+import ConfirmModal from "../components/ConfirmModal/ConfirmModal";
 import { cardTypeEnum } from "@/common/enums/cardTypeEnum";
 import { scoreTypeEnum } from "@/common/enums/scoreTypeEnum";
 import { buttonTypeEnum } from "@/common/enums/buttonTypeEnum";
@@ -95,6 +101,7 @@ export default {
     timer: Timer,
     "score-table": ScoreTable,
     "custom-button": Button,
+    "confirm-modal": ConfirmModal,
   },
   data() {
     return {
@@ -123,6 +130,7 @@ export default {
         type: cardTypeEnum.Distribute,
       },
       refreshCard: 0,
+      confirmModalShow: false,
     };
   },
   watch: {
@@ -156,9 +164,9 @@ export default {
         this.removeSelections();
       }
     },
-    dragEnter(deck, card) {
-      this.targetCard = card;
+    dragEnter(deck) {
       this.targetDeck = deck;
+      this.targetCard = deck[deck.length - 1];
     },
     dragEnd() {
       if (
@@ -252,8 +260,7 @@ export default {
       }
     },
     newGame() {
-      //reload page for new game
-      window.location.reload();
+      this.confirmModalShow = true;
     },
     hint() {
       let isThereAnyTip = false;
@@ -327,6 +334,7 @@ export default {
     },
     checkHintTargetDeckMove(targetCards, recomendedCards) {
       let result = false;
+
       if (
         targetCards.length > 0 &&
         targetCards[targetCards.length - 1].isOpen &&
@@ -352,6 +360,17 @@ export default {
 
         this.refreshCard++;
       }, 1000 * 1);
+    },
+    confirmModalResponse(response) {
+      if (response) {
+        this.openNewGame();
+      }
+
+      this.confirmModalShow = false;
+    },
+    openNewGame() {
+      //reload page for new game
+      window.location.reload();
     },
   },
   created() {

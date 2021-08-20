@@ -187,15 +187,8 @@ describe("SpiderSolitaire.vue", () => {
         { cardNumber: "5", deck: 1, isOpen: true, type: 1, value: 5 },
         { cardNumber: "6", deck: 6, isOpen: true, type: 1, value: 6 },
       ];
-      let targetCard = {
-        cardNumber: "4",
-        deck: 4,
-        isOpen: true,
-        type: 1,
-        value: 4,
-      };
 
-      await wrapper.vm.dragEnter(targetDeck, targetCard);
+      await wrapper.vm.dragEnter(targetDeck);
 
       expect(wrapper.vm.targetDeck).toStrictEqual(targetDeck);
     });
@@ -207,17 +200,10 @@ describe("SpiderSolitaire.vue", () => {
         { cardNumber: "5", deck: 1, isOpen: true, type: 1, value: 5 },
         { cardNumber: "6", deck: 6, isOpen: true, type: 1, value: 6 },
       ];
-      let targetCard = {
-        cardNumber: "4",
-        deck: 4,
-        isOpen: true,
-        type: 1,
-        value: 4,
-      };
 
-      await wrapper.vm.dragEnter(targetDeck, targetCard);
+      await wrapper.vm.dragEnter(targetDeck);
 
-      expect(wrapper.vm.targetCard).toStrictEqual(targetCard);
+      expect(wrapper.vm.targetCard).toStrictEqual(targetDeck.pop());
     });
   });
 
@@ -526,6 +512,162 @@ describe("SpiderSolitaire.vue", () => {
       await wrapper.vm.updateScore("something irrelevant");
 
       expect(wrapper.vm.score).toEqual(baseScore);
+    });
+  });
+
+  describe("newGame method should set confirmModalShow true for open confirm modal", () => {
+    it("should set confirmModalShow true", async () => {
+      await wrapper.vm.newGame();
+
+      expect(wrapper.vm.confirmModalShow).toBeTruthy();
+    });
+  });
+
+  describe("Hint method is used to tips", () => {
+    it("should set relevant cards isselected true when there is a hint and refresh card components", async () => {
+      let decks = [
+        [
+          { cardNumber: "3", deck: 3, isOpen: true, type: 1, value: 3 },
+          { cardNumber: "4", deck: 3, isOpen: true, type: 1, value: 4 },
+          { cardNumber: "5", deck: 3, isOpen: true, type: 1, value: 5 },
+        ],
+        [{ cardNumber: "2", deck: 3, isOpen: true, type: 1, value: 2 }],
+      ];
+
+      let expectedDecks = [
+        [
+          {
+            cardNumber: "3",
+            deck: 3,
+            isOpen: true,
+            type: 1,
+            value: 3,
+            isSelected: true,
+          },
+          {
+            cardNumber: "4",
+            deck: 3,
+            isOpen: true,
+            type: 1,
+            value: 4,
+            isSelected: true,
+          },
+          {
+            cardNumber: "5",
+            deck: 3,
+            isOpen: true,
+            type: 1,
+            value: 5,
+            isSelected: true,
+          },
+        ],
+        [
+          {
+            cardNumber: "2",
+            deck: 3,
+            isOpen: true,
+            type: 1,
+            value: 2,
+            isSelected: true,
+          },
+        ],
+      ];
+
+      await wrapper.setData({ decks: decks });
+      await wrapper.vm.hint();
+
+      expect(wrapper.vm.decks).toStrictEqual(expectedDecks);
+      expect(wrapper.vm.refreshCard).toBe(1);
+    });
+
+    it("should set distribute card isselected true when there is no hint but undistributed cards", async () => {
+      let decks = [
+        [
+          { cardNumber: "6", deck: 3, isOpen: true, type: 1, value: 6 },
+          { cardNumber: "4", deck: 3, isOpen: true, type: 1, value: 4 },
+          { cardNumber: "5", deck: 3, isOpen: true, type: 1, value: 5 },
+        ],
+        [{ cardNumber: "2", deck: 3, isOpen: true, type: 1, value: 2 }],
+      ];
+
+      await wrapper.setData({ decks: decks });
+      await wrapper.vm.hint();
+
+      expect(wrapper.vm.distributeCard.isSelected).toBeTruthy();
+      expect(wrapper.vm.refreshCard).toBe(1);
+    });
+
+    it("should show sorry toastr when there is no hint and undistributed cards", async () => {
+      let decks = [
+        [
+          { cardNumber: "6", deck: 3, isOpen: true, type: 1, value: 6 },
+          { cardNumber: "4", deck: 3, isOpen: true, type: 1, value: 4 },
+          { cardNumber: "5", deck: 3, isOpen: true, type: 1, value: 5 },
+        ],
+        [{ cardNumber: "2", deck: 3, isOpen: true, type: 1, value: 2 }],
+      ];
+      let undistributedDeck = [];
+
+      await wrapper.setData({ decks: decks });
+      await wrapper.setData({ undistributedDeck: undistributedDeck });
+      await wrapper.vm.hint();
+
+      expect(showToastr).toHaveBeenCalled();
+    });
+  });
+
+  describe("checkHintTargetDeckMove method should control recomended and target cards", () => {
+    it("should return true when recomended cards can move to target cards", async () => {
+      let targetCards = [
+        { cardNumber: "4", deck: 3, isOpen: true, type: 1, value: 4 },
+        { cardNumber: "5", deck: 3, isOpen: true, type: 1, value: 5 },
+      ];
+
+      let recomendedCards = [
+        { cardNumber: "6", deck: 3, isOpen: true, type: 1, value: 6 },
+        { cardNumber: "7", deck: 3, isOpen: true, type: 1, value: 7 },
+      ];
+
+      let checkHintTargetDeckMoveResponse =
+        await wrapper.vm.checkHintTargetDeckMove(targetCards, recomendedCards);
+
+      expect(checkHintTargetDeckMoveResponse).toBeTruthy();
+    });
+
+    it("should return false when recomended cards can not move to target cards", async () => {
+      let targetCards = [
+        { cardNumber: "5", deck: 3, isOpen: true, type: 1, value: 5 },
+        { cardNumber: "4", deck: 3, isOpen: true, type: 1, value: 4 },
+      ];
+
+      let recomendedCards = [
+        { cardNumber: "6", deck: 3, isOpen: true, type: 1, value: 6 },
+        { cardNumber: "7", deck: 3, isOpen: true, type: 1, value: 7 },
+      ];
+
+      let checkHintTargetDeckMoveResponse =
+        await wrapper.vm.checkHintTargetDeckMove(targetCards, recomendedCards);
+
+      expect(checkHintTargetDeckMoveResponse).toBeFalsy();
+    });
+  });
+
+  describe("Gets confirmation whether to start a new game", () => {
+    it("should set confirmmodal show false when parameter is false", async () => {
+      await wrapper.vm.confirmModalResponse(false);
+
+      expect(wrapper.vm.confirmModalShow).toBeFalsy();
+    });
+
+    it("should reload page when parameter is true", async () => {
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { reload: jest.fn() },
+      });
+
+      await wrapper.vm.confirmModalResponse(true);
+
+      expect(window.location.reload).toHaveBeenCalled();
     });
   });
 });
