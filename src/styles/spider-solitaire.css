@@ -20,6 +20,7 @@
   top: 0;
   width: 95vw;
   margin-left: 2vw;
+  z-index: 2;
 }
 
 .title {
