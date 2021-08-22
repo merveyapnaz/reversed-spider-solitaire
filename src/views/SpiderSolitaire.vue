@@ -82,12 +82,12 @@
 </template>
 
 <script>
-import Card from "../components/Card/Card";
-import Firework from "../components/Firework/Firework";
-import Timer from "../components/Timer";
-import ScoreTable from "../components/ScoreTable";
-import Button from "../components/Button";
-import ConfirmModal from "../components/ConfirmModal/ConfirmModal";
+import Card from "@/components/Card/Card";
+import Firework from "@/components/Firework/Firework";
+import Timer from "@/components/Timer";
+import ScoreTable from "@/components/ScoreTable";
+import Button from "@/components/Button";
+import ConfirmModal from "@/components/ConfirmModal/ConfirmModal";
 import { cardTypeEnum } from "@/common/enums/cardTypeEnum";
 import { scoreTypeEnum } from "@/common/enums/scoreTypeEnum";
 import { buttonTypeEnum } from "@/common/enums/buttonTypeEnum";
