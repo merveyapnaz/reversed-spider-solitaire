@@ -13,6 +13,7 @@
   "dependencies": {
     "@cypress/vue": "^2.2.3",
     "@cypress/webpack-dev-server": "^1.4.0",
+    "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.6.5",
     "cypress": "^8.3.0",
     "express": "^4.17.1",
