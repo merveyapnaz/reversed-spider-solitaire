@@ -3,6 +3,7 @@ import App from "./App.vue";
 import Toastr from "./components/Toastr/Toastr";
 import utilities from "./common/utilities/utilities";
 import app from "./common/constants/app";
+import router from "./router";
 
 Object.defineProperty(Vue.prototype, "$Toastr", { value: Toastr });
 Object.defineProperty(Vue.prototype, "$utilities", { value: utilities });
@@ -12,5 +13,6 @@ require("./components/Toastr/toastr.css");
 Vue.config.productionTip = false;
 
 new Vue({
+  router,
   render: (h) => h(App),
 }).$mount("#app");
